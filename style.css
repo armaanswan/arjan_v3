@@ -1,0 +1,209 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.main {
+    height: 100vh;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+}
+
+.album {
+    height: 100vh;
+    width: 100vw;
+    scroll-snap-align: start;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1rem;
+    row-gap: 0.5rem;
+    padding: 4rem 6rem;
+}
+
+.album-title {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #FFFFFF;
+    grid-column: 1 / 13;
+}
+
+.album-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.album-column.left-column {
+    grid-column: 1 / 5;
+}
+
+.album-column.middle-column {
+    grid-column: 6 / 10;
+}
+
+.album-column.right-column {
+    grid-column: 10 / 13;
+}
+
+.album-subheading {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1rem;
+}
+
+.album-cover {
+    width: 100%;
+}
+
+.streaming-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+.tracklist {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.tracklist .track {
+    color: #FFFFFF;
+    font-size: 1rem;
+    padding: 0.5rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.track::before {
+    content: attr(data-track-number);
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.tracklist .track:hover,
+.tracklist .track:focus {
+    background-color: rgba(255, 255, 255, 0.20);
+}
+
+.album-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.album-attribute {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    color: #FFFFFF;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.album-attribute::before {
+    content: attr(data-attribute-title);
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+}
+
+.album-description {
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+/* Lyrics Popup */
+.overlay {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.25);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.overlay.open {
+    display: block;
+}
+
+.lyrics-popup {
+    height: 95vh;
+    width: 80vw;
+    padding: 4rem;
+    border-radius: 4rem 4rem 0 0;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: none;
+}
+
+.lyrics-popup.open {
+    display: grid;
+    grid-template-columns: repeat(3fr, 9fr, 1fr);
+    gap: 1rem;
+}
+
+.lyrics-popup .popup-header {
+    display: grid;
+
+    grid-column: 1 / 5;
+    border-radius: 4rem 4rem 0 0;
+}
+
+.lyrics-popup .popup-subheading {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.lyrics-popup .lyrics-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+
+.lyrics-popup .album-attribute {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+/* Icons */
+.icon {
+    fill: rgba(255, 255, 255, 0.5);
+    transition: fill 0.3s ease;
+}
+
+.icon:hover,
+.icon:focus {
+    fill: rgba(255, 255, 255, 1);
+}
+
+/* Add ARIA LABELS */
